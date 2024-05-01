@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+}
+
+.navbar {
+  background-color: #3f51b5;
+}
+
+.navbar-brand,
+.nav-link {
+  /* color: #89e2d6 !important; */
+  color: black !important
+}
+
+.nav-link:hover {
+  color: #ffafc6 !important;
+}
+
+.navbar-nav {
+  justify-content: center !important;
+}
+
+.Menu-img {
+  width: 200px; /* Ajusta este valor según tus necesidades */
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}

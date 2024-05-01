@@ -1,0 +1,106 @@
+:root {
+  --font-size: 15px;
+
+  --bg-primary: #167ac3;
+  --color-primary: #ffffff;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* font-size: 13px !important; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.colorCar {
+  color: var(--color-primary);
+}
+
+.textColor {
+  color: #ffafc6 !important;
+}
+
+.btnStore {
+  background: #ffafc6 !important;
+}
+
+.btnStore:hover {
+  background: #dfa4b4 !important;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+.textSelect:hover{
+  text-decoration: underline;
+}
+
+Nav a {
+  /* color: var(--color-primary) !important; */
+  color: #89e2d6 !important;
+}
+
+.btn-link {
+  /* color: var(--color-primary) !important; */
+  color: #89e2d6 !important;
+}
+
+#canvasText {
+  /* color: #89e2d6 !important; */
+  color: black !important
+}
+
+#Search::after {
+  display: none !important;
+}
+
+.boxShadowInput {
+  box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+}
+
+#navResponsive {
+  display: flex !important;
+}
+
+@media screen and (max-width: 990px) {
+  #navResponsive {
+    display: none !important;
+  }
+
+  .responsiveFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: -webkit-center;
+  }
+}
+
+.sliderFluid {
+  display: block !important;
+}
+
+.sliderFluidResp {
+  display: none !important;
+}
+
+/* Por ejemplo, para pantallas más pequeñas que 768px */
+@media (max-width: 610px) {
+  .sliderFluid {
+    display: none !important;
+  }
+
+  .sliderFluidResp {
+    display: block !important;
+  }
+}

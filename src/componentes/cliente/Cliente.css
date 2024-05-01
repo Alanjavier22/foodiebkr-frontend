@@ -1,0 +1,22 @@
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.fade-enter {
+    opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms ease-in;
+}
+
+.textCotizar{
+    background: #ffafc6;
+}
+
+.img-fluid{
+    height: revert-layer !important;
+}
