@@ -5,8 +5,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta name="author" content="Daniel Alarcon">
-    <meta name="author" content="Alan Mejia">
+    <meta name="author" content="Daniel Alarcon" />
+    <meta name="author" content="Alan Mejia" />
     <meta
       name="description"
       content="Web site created using create-react-app"
@@ -17,6 +17,17 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <style>
+      .spinner_P7sC {
+        transform-origin: center;
+        animation: spinner_svv2 0.75s infinite linear;
+      }
+      @keyframes spinner_svv2 {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

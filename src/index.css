@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --font-size: 15px;
 
@@ -13,12 +17,62 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* font-size: 13px !important; */
+  --bs-nav-tabs-border-color: #d7d6d6
+  --bs-nav-tabs-link-active-border-color: #d7d6d6 !important
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+input,
+textarea,
+select {
+  border: 2px solid #d7d6d6 !important;
+}
+
+.border-b-2 {
+  border-bottom: 2px solid #d7d6d6 !important;
+}
+
+input[type='checkbox'] {
+  border: 2px solid black !important;
+}
+
+/* Personalizar la apariencia general de las pestañas */
+.custom-nav-tabs {
+  border-color: #a3a0a0 !important;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Personalizar la pestaña activa */
+.custom-nav-tabs .nav-link.active {
+  border-top-color: #a3a0a0 !important;
+  border-left-color: #a3a0a0 !important;
+  border-right-color: #a3a0a0 !important;
+}
+
+.hidden-file-input {
+  display: none;
+}
+
+.custom-upload-button {
+  /* Estilos para el botón personalizado */
+  background-color: #f0f0f0 !important;
+  border: 1px solid #ccc !important;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px !important;
+  color: #333 !important;
+  /* width: 190px; */
+}
+
+.custom-upload-button:hover {
+  background-color: #e0e0e0;
+}
+
 
 .colorCar {
   color: var(--color-primary);
@@ -28,20 +82,12 @@ code {
   color: #ffafc6 !important;
 }
 
-.btnStore {
-  background: #ffafc6 !important;
-}
-
-.btnStore:hover {
-  background: #dfa4b4 !important;
-}
-
 a:link,
 a:visited {
   text-decoration: none;
 }
 
-.textSelect:hover{
+.textSelect:hover {
   text-decoration: underline;
 }
 
@@ -50,14 +96,47 @@ Nav a {
   color: #89e2d6 !important;
 }
 
-.btn-link {
-  /* color: var(--color-primary) !important; */
+a {
+  font-size: 0.9rem;
   color: #89e2d6 !important;
+}
+
+.carousel-item-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+}
+
+.carousel-item-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  filter: blur(15px);
+  z-index: 1;
+}
+
+.carousel-item-image {
+  position: relative;
+  z-index: 2;
+  max-height: 100%;
+  max-width: 70%;
 }
 
 #canvasText {
   /* color: #89e2d6 !important; */
-  color: black !important
+  color: black !important;
+}
+
+#canvasText a {
+  display: flex;
+  align-items: center;
 }
 
 #Search::after {
@@ -94,6 +173,97 @@ Nav a {
   display: none !important;
 }
 
+.table-responsive-xl {
+  height: 100%;
+  overflow: auto;
+}
+
+.page-link {
+  color: #4b5563 !important;
+  font-weight: bold;
+}
+
+#thBg {
+  background-color: #f3f4f6 !important;
+}
+
+th {
+  background: white;
+  position: sticky;
+  top: 0;
+}
+
+#Pag-Bg {
+  background: #ffffff !important;
+  color: #626c79 !important;
+  /* border: 1px solid #ffffff; */
+}
+
+#Pag-Bg-Act {
+  background: #88e3d5 !important;
+  color: #fefdfd !important;
+  border: 1px solid #88e3d5;
+}
+
+.left-modal {
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-width: 400px;
+  height: 170px;
+}
+
+.left-modal .swal-icon {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 25px;
+  margin-left: 0px;
+}
+
+.left-modal .swal-text {
+  font-size: 22px;
+  margin-bottom: 0;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+
+.left-modal .swal-title {
+  font-size: 22px;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+
+.check-tabla input {
+  border: 2px solid;
+}
+
+#opt-drop,
+#opt-drop-item {
+  background: #ffffff !important;
+  color: #1c1d1d !important;
+  text-transform: capitalize;
+  margin-right: 10px;
+  border: none;
+}
+
+#opt-drop-item {
+  font-size: 12px;
+}
+
+#Ajuste-text {
+  width: 16.3% !important;
+}
+
+#Ajuste-text-descrip {
+  width: 18.3% !important;
+}
+
 /* Por ejemplo, para pantallas más pequeñas que 768px */
 @media (max-width: 610px) {
   .sliderFluid {
@@ -102,5 +272,16 @@ Nav a {
 
   .sliderFluidResp {
     display: block !important;
+  }
+}
+
+/* Por ejemplo, para pantallas más pequeñas que 768px */
+@media (max-width: 1200px) {
+  #Ajuste-text {
+    width: 40% !important;
+  }
+
+  #Ajuste-text-descrip {
+    width: 50% !important;
   }
 }
