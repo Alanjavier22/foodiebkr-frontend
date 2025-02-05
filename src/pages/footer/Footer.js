@@ -42,7 +42,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="text-white underline"
         >
-          Políticas de envío y reembolso
+          Políticas de envío y reembolso.
         </a>
       </div>
     </>
