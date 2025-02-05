@@ -44,7 +44,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="text-white underline"
         >
-          Políticas de envío y reembolso de la empresa
+          Políticas de envío y reembolso
         </a>
       </div>
     </>
