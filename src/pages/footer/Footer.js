@@ -1,3 +1,4 @@
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { FiInstagram } from "react-icons/fi";
 
@@ -6,10 +7,7 @@ const Footer = () => {
     <>
       <Row className="justify-center items-center py-2 pr-4 pb-4 m-0 w-full bg-[#89e2d6] text-white">
         <Col xs={12} lg={4} className="d-flex justify-content-center">
-          <div
-            style={{ maxWidth: "290px" }}
-            className="responsiveFooter px-4 py-3"
-          >
+          <div style={{ maxWidth: "290px" }} className="responsiveFooter px-4 py-3">
             <img src="/logo.png" width="100%" alt="Logo" />
           </div>
         </Col>
