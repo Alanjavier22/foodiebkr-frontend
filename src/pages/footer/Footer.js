@@ -23,7 +23,7 @@ const Footer = () => {
         </Col>
         <Col xs={12} lg={4} className="d-flex justify-content-center">
           <div className="responsiveFooter py-3 text-center">
-            <h5>VISITA NUESTRAS REDES SOCIALES</h5>
+            <h5>VISITA NUESTRAS REDES SOCIALES.</h5>
             <a
               href="https://www.instagram.com/lafoodiebaker/"
               target="_blank"
