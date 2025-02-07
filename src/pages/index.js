@@ -11,10 +11,13 @@ import Contacto from "./contacto/Contacto";
 
 import Carrito from "./carrito/Carrito";
 import Cotizacion from "./cotizacion/tienda/Cotizacion";
+
+// Importa ambos componentes para la ruta /cursos
 import CursosTd from "./cursos/tienda/CursosTd";
+import CursoSis from "./cursos/sistema/CursoSis";
 import DetallesC from "./cursos/tienda/components/Detalles";
 
-//Producto en tienda
+// Producto en tienda
 import MenuOpc from "./producto/tienda/components/MenuOpc";
 import Tienda from "./producto/tienda/Tienda";
 import Categoria from "./producto/tienda/Categoria";
@@ -22,19 +25,18 @@ import SubCategoria from "./producto/tienda/SubCategoria";
 import Detalles from "./producto/tienda/Detalles";
 import Resultados from "./producto/tienda/Resultados";
 
-//Inventario en tienda
+// Inventario en tienda
 import MenuOpcTd from "./inventario/tienda/components/MenuOpc";
 import TiendaInventario from "./inventario/tienda/TiendaInventario";
 import InventarioTd from "./inventario/tienda/InventarioTd";
 import DetallesTd from "./inventario/tienda/Detalles";
 
-//Para usuario admin, supervisor y empleado
+// Para usuario admin, supervisor y empleado
 import Cotizaciones from "./cotizacion/sistema/Cotizaciones";
 import Cliente from "./cliente/sistema/Cliente";
 import Productos from "./producto/sistema/Productos";
 import Inventario from "./inventario/sistema/SistemaInventario";
 import Offers from "./ofertas/Offers";
-import CursoSis from "./cursos/sistema/CursoSis";
 import Dashboard from "./dashboard/Dashboard";
 import Auditory from "./auditoria/sistema/Auditory";
 
@@ -42,7 +44,7 @@ import MyData from "./cliente/cliente/MyData";
 import MyQuotes from "./cotizacion/cliente/MyQuotes";
 import MySales from "./ventas/MySales";
 
-// Rutas iniciales cliente
+// Rutas iniciales para usuarios no autenticados
 const initialRoutes = () => [
   {
     path: "/",
@@ -56,7 +58,7 @@ const initialRoutes = () => [
   { path: "/*", element: <Navigate to="/" replace /> },
 ];
 
-// Rutas habilitadas para cliente
+// Rutas para clientes (rol 4)
 const clientRoutes = (user) => [
   {
     path: "/home",
@@ -110,7 +112,6 @@ const clientRoutes = (user) => [
       </MenuOpcTd>
     ),
   },
-  //revisar hacer uno propio
   {
     path: "/inventario-producto/:id_producto/:producto",
     element: (
@@ -136,14 +137,6 @@ const clientRoutes = (user) => [
     ),
   },
   {
-    path: "/cursos",
-    element: <CursosTd user={user} />,
-  },
-  {
-    path: "/cursos/:id_curso/:nombre",
-    element: <DetallesC />,
-  },
-  {
     path: "/carrito",
     element: <Carrito user={user} />,
   },
@@ -161,7 +154,7 @@ const clientRoutes = (user) => [
   },
 ];
 
-// Rutas habilitadas para cliente
+// Rutas para clientes autenticados
 const clientRoutesLogin = (user) => [
   {
     path: "/perfil",
@@ -177,21 +170,19 @@ const clientRoutesLogin = (user) => [
   },
 ];
 
-// Rutas iniciales usuarios con login
+// Rutas para usuarios autenticados que no son clientes (admin, supervisor, empleado)
 const initialRoutesLogin = (user) => [
   {
     path: "/",
     element: (
-      <Navigate
-        to={Number(user.id_rol) === 1 ? "/dashboard" : "/cotizaciones"}
-      />
+      <Navigate to={Number(user.id_rol) === 1 ? "/dashboard" : "/cotizaciones"} />
     ),
     exact: true,
   },
   { path: "/*", element: <Navigate to="/" replace /> },
 ];
 
-// Rutas habilitadas para usuario administrador
+// Rutas para administradores (rol 1)
 const adminRoutes = (user) => [
   {
     path: "/productos",
@@ -218,10 +209,6 @@ const adminRoutes = (user) => [
     element: <Offers user={user} />,
   },
   {
-    path: "/cursos",
-    element: <CursoSis user={user} />,
-  },
-  {
     path: "/dashboard",
     element: <Dashboard user={user} />,
   },
@@ -231,23 +218,15 @@ const adminRoutes = (user) => [
   },
 ];
 
-// Rutas habilitadas para usuario empleado
+// Rutas para empleados (rol 3)
 const employeeRoutes = (user) => [
   {
     path: "/cotizaciones",
     element: <Cotizaciones user={user} />,
   },
-  //   {
-  //     path: "/cliente",
-  //     element: (
-  //
-  //         <Cliente user={user} />
-  //
-  //     ),
-  //   },
 ];
 
-// Rutas habilitadas para usuario superior
+// Rutas para supervisores (rol 2)
 const supervisorRoutes = (user) => [
   {
     path: "/cotizaciones",
@@ -255,24 +234,43 @@ const supervisorRoutes = (user) => [
   },
 ];
 
+// Ruta común para /cursos, definida de forma única con condicional
+const cursosRoute = (user) => [
+  {
+    path: "/cursos",
+    element: user.id_rol === 4 ? (
+      <CursosTd user={user} />
+    ) : (
+      <CursoSis user={user} />
+    ),
+  },
+  {
+    path: "/cursos/:id_curso/:nombre",
+    element: <DetallesC />,
+  },
+];
+
 function rutas(user) {
   const id_rol = Number(user.id_rol);
-  const _rutas = [];
+  let _rutas = [];
 
   if (id_rol === 4) {
-    _rutas.push(...initialRoutes(user));
-    _rutas.push(...clientRoutes(user));
-
-    if (user.login) _rutas.push(...clientRoutesLogin(user));
+    _rutas = [
+      ...initialRoutes(),
+      ...clientRoutes(user),
+    ];
+    if (user.login) {
+      _rutas = [..._rutas, ...clientRoutesLogin(user)];
+    }
+  } else {
+    _rutas = [...initialRoutesLogin(user)];
+    if (id_rol === 1) _rutas = [..._rutas, ...adminRoutes(user)];
+    if (id_rol === 2) _rutas = [..._rutas, ...supervisorRoutes(user)];
+    if (id_rol === 3) _rutas = [..._rutas, ...employeeRoutes(user)];
   }
 
-  if (id_rol !== 4) {
-    _rutas.push(...initialRoutesLogin(user));
-
-    if (id_rol === 1) _rutas.push(...adminRoutes(user));
-    if (id_rol === 2) _rutas.push(...supervisorRoutes(user));
-    if (id_rol === 3) _rutas.push(...employeeRoutes(user));
-  }
+  // Agregar la ruta común de /cursos
+  _rutas = [..._rutas, ...cursosRoute(user)];
 
   return _rutas;
 }
