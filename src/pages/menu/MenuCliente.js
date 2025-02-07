@@ -1,6 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
-
-import { DropdownButton, Dropdown, Nav } from "react-bootstrap";
+import { Navbar, Nav, Container, Dropdown } from "react-bootstrap";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaUserTie } from "react-icons/fa";
 
@@ -8,100 +8,92 @@ import { SubMenuCliente } from "./SubMenuCliente";
 
 const MenuCliente = ({ datos, logout }) => {
   const { login, nombre, rol, cantidad, valor } = datos;
+
   return (
-    <>
-      <Nav className="justify-center flex-grow-1 h-full">
-        <p className="w-2/5"></p>
+    <Navbar bg="light" expand="lg" className="shadow-sm">
+      <Container>
+        {/* Marca o logo */}
+        <Navbar.Brand as={Link} to="/" className="fw-bold">
+          MiSitio
+        </Navbar.Brand>
 
-        <Link to="/" className="mx-1 p-2 font-semibold tracking-wider">
-          INICIO
-        </Link>
+        {/* Botón para el menú responsive */}
+        <Navbar.Toggle aria-controls="menu-cliente" />
 
-        {[
-          "TIENDA",
-          "PRODUCTOS",
-          "COTIZACION",
-          "CURSOS",
-          "CONTACTO",
-          "NOSOTROS",
-        ].map((text, idx) => (
-          <Link
-            key={idx}
-            to={`/${text.toLowerCase()}`}
-            className="mx-1 p-2 font-semibold tracking-wider"
-          >
-            {text}
-          </Link>
-        ))}
+        <Navbar.Collapse id="menu-cliente">
+          <Nav className="me-auto align-items-center">
+            <Nav.Link as={Link} to="/" className="fw-bold">
+              INICIO
+            </Nav.Link>
+            {["TIENDA", "PRODUCTOS", "COTIZACION", "CURSOS", "CONTACTO", "NOSOTROS"].map((text, idx) => (
+              <Nav.Link
+                key={idx}
+                as={Link}
+                to={`/${text.toLowerCase()}`}
+                className="fw-bold"
+              >
+                {text}
+              </Nav.Link>
+            ))}
+          </Nav>
 
-        <p className="w-2/5 h-full"></p>
+          <Nav className="ms-auto align-items-center">
+            {/* Enlace al carrito */}
+            <Nav.Link as={Link} to="/carrito" className="d-flex align-items-center">
+              <FiShoppingCart className="mx-2" size={20} />
+              <span>{`${cantidad} / $${valor}`}</span>
+            </Nav.Link>
 
-        <div
-          className="px-0 d-flex align-items-center colorCar"
-          id="navResponsive"
-        >
-          <Link to="/carrito" className="font-semibold tracking-wider">
-            <div className="flex items-center justify-end w-36">
-              <FiShoppingCart className="mx-3" />
-              <p className="m-0 w-auto">{`${cantidad} / $${valor}`}</p>
-            </div>
-          </Link>
-        </div>
-
-        {!login && (
-          <>
-            <div id="navResponsive" className="px-3" />
-            <Link
-              to="/login"
-              style={{ minWidth: "135px" }}
-              className="mx-1 p-2 uppercase font-semibold tracking-wider"
-            >
-              Iniciar Sesión
-            </Link>
-            <Link
-              to="/register"
-              style={{ minWidth: "90px" }}
-              className="mx-1 p-2 uppercase font-semibold tracking-wider"
-            >
-              Registrarse
-            </Link>
-            <div id="navResponsive" className="px-3" />
-          </>
-        )}
-      </Nav>
-
-      {login && (
-        <>
-          <div
-            id="navResponsive"
-            className="flex justify-center items-center h-full ml-auto mr-5 px-3"
-          >
-            <DropdownButton
-              title={`${nombre} (${rol.toLowerCase()})`}
-              id="opt-drop"
-              className="font-semibold text-gray-600"
-            >
-              {SubMenuCliente.map(({ label, link }) => (
-                <Dropdown.Item
-                  id="opt-drop-item"
-                  key={label}
-                  to={link}
+            {/* Opciones según el estado de autenticación */}
+            {!login ? (
+              <>
+                <Nav.Link
                   as={Link}
-                  className="pl-3 uppercase"
+                  to="/login"
+                  className="text-uppercase fw-bold mx-2"
+                  style={{ minWidth: "135px" }}
                 >
-                  {label.toUpperCase()}
-                </Dropdown.Item>
-              ))}
-              <Dropdown.Divider />
-              <Dropdown.Item id="opt-drop-item" onClick={logout}>
-                CERRAR SESIÓN
-              </Dropdown.Item>
-            </DropdownButton>
-            <FaUserTie className="h-20" />
-          </div>
-        </>
-      )}
-    </>
+                  Iniciar Sesión
+                </Nav.Link>
+                <Nav.Link
+                  as={Link}
+                  to="/register"
+                  className="text-uppercase fw-bold mx-2"
+                  style={{ minWidth: "90px" }}
+                >
+                  Registrarse
+                </Nav.Link>
+              </>
+            ) : (
+              <>
+                <Dropdown align="end" className="mx-2">
+                  <Dropdown.Toggle variant="light" id="dropdown-usuario" className="text-uppercase fw-bold">
+                    {`${nombre} (${rol.toLowerCase()})`}
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu>
+                    {SubMenuCliente.map(({ label, link }) => (
+                      <Dropdown.Item
+                        as={Link}
+                        to={link}
+                        key={label}
+                        className="text-uppercase"
+                      >
+                        {label}
+                      </Dropdown.Item>
+                    ))}
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={logout}>
+                      Cerrar Sesión
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+                <FaUserTie size={24} className="ms-2" />
+              </>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 

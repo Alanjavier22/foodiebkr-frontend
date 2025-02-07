@@ -35,16 +35,16 @@ const Footer = () => {
           </div>
         </Col>
       </Row>
-      <div className="text-center py-2 bg-[#89e2d6] text-white">
-        <a
-          href="https://drive.google.com/file/d/1aezWSffEoG1xSp69L5npIwibjlKFDhWO/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-white underline"
-        >
-          Políticas de envío y reembolso de la empresa para el cliente.
-        </a>
-      </div>
+      <div className="text-center py-2 bg-[#89e2d6] text-black font-bold">
+  <a
+    href="https://drive.google.com/file/d/1aezWSffEoG1xSp69L5npIwibjlKFDhWO/view?usp=sharing"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="underline"
+  >
+    Políticas de envío y reembolso.
+  </a>
+</div>
     </>
   );
 };
