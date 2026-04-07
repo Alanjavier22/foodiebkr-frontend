@@ -36,7 +36,7 @@ const Menu = ({ user }) => {
         <Navbar
           expand={isCliente ? "lg" : "false"}
           fixed="top"
-          className="h-20 bg-white w-screen border-b-2"
+          className="h-20 bg-white/70 backdrop-blur-lg w-screen shadow-sm border-b border-gray-100 transition-all duration-500 z-50"
         >
           <Container
             fluid
