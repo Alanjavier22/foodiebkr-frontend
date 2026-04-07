@@ -44,9 +44,11 @@ const GridServices = ({
     <motion.div
       whileHover={{ y: -8, scale: 1.02 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      className="relative w-[340px] h-[400px] my-5 rounded-3xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgb(0,0,0,0.12)] overflow-hidden cursor-pointer"
+      className="relative w-[340px] h-[400px] mx-auto my-5 rounded-[2rem] bg-white/60 backdrop-blur-xl border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:shadow-[0_20px_40px_rgba(236,72,153,0.15)] overflow-hidden cursor-pointer"
       onClick={viewPage}
     >
+      {/* Subtle Glows */}
+      <div className="absolute top-0 right-0 w-24 h-24 bg-pink-300/30 rounded-full blur-2xl z-0"></div>
       {title && (
         <div className="absolute top-4 left-0 right-0 z-50 px-4">
           <div className="flex justify-center w-full">
@@ -56,9 +58,9 @@ const GridServices = ({
           </div>
         </div>
       )}
-      <div className="h-full w-full flex flex-col items-center justify-start p-6 bg-gradient-to-b from-gray-50/50 to-white">
+      <div className="h-full w-full flex flex-col items-center justify-start p-6 relative z-10">
         <motion.div 
-          className="relative w-full h-[65%] rounded-2xl overflow-hidden shadow-inner flex items-center justify-center bg-gray-100"
+          className="relative w-full h-[65%] rounded-[1.5rem] overflow-hidden shadow-[inset_0_2px_4px_rgba(0,0,0,0.06)] flex items-center justify-center bg-gray-50/50"
         >
           <div
             className="absolute inset-0 bg-cover bg-center filter blur-xl opacity-40 scale-110 object-cover"

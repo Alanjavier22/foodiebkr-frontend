@@ -7,6 +7,7 @@ import TooltipCustom from "../../../../components/Tooltip";
 const ValorEstimado = ({ handleChange, formData, adicional }) => {
   const [valorEstimado, setValorEstimado] = useState(0);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const calcularValorEstimado = () => {
       let newValorEstimado = 0;
@@ -18,7 +19,7 @@ const ValorEstimado = ({ handleChange, formData, adicional }) => {
           try {
             let { valor } = JSON.parse(currentData);
 
-            if (cantidadForm || cantidadForm == 0)
+            if (cantidadForm || cantidadForm === 0)
               valor = Number(cantidadForm) * Number(valor);
 
             newValorEstimado += Number(valor);

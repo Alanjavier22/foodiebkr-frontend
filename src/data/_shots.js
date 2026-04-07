@@ -1,4 +1,4 @@
-export default [
+const shots = [
   {
     nombre: "Base del Shot",
     descripcion: "Sabor Principal del shot",
@@ -265,3 +265,5 @@ export default [
     ],
   },
 ];
+
+export default shots;

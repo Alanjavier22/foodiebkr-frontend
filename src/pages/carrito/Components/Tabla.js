@@ -4,7 +4,7 @@ import swal from "sweetalert";
 
 import { CartContext } from "../../../context/CartContext";
 
-import { Button, Table, Card, Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { TiDelete } from "react-icons/ti";
 
 import CodigoDescuento from "./CodigoDescuento";
@@ -85,96 +85,69 @@ const Tabla = ({ data, user }) => {
   };
 
   return (
-    <div
-      className="border-0 m-auto pt-1 w-full px-4"
-      style={{ minHeight: "20vh" }}
-    >
-      <Card
-        className="w-full flex justify-between border-0"
-        style={{ maxHeight: "55vh", overflowY: "auto" }}
-      >
-        <Table responsive="md" className="h-100">
-          <thead>
-            <tr>
-              <th></th>
-              <th className="px-5 py-3 w-2/3 border-b-2 textDetalles border-gray-200 bg-gray-100  text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                PRODUCTO
-              </th>
-              <th className="px-5 py-3 w-2/3 border-b-2 textDetalles border-gray-200 bg-gray-100  text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                PRECIO (sin iva)
-              </th>
-              <th className="px-5 py-3 border-b-2 textDetalles border-gray-200 bg-gray-100  text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                CANTIDAD
-              </th>
-              <th className="px-5 py-3 border-b-2 textDetalles border-gray-200 bg-gray-100  text-center text-sm font-semibold text-gray-600 uppercase tracking-wider">
-                SUBTOTAL
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {rows &&
-              rows.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <td>
-                      <div className="d-flex align-items-center h-100 justify-content-center fs-3">
-                        <TiDelete
-                          onClick={() => deleteItem(item)}
-                          style={{ cursor: "pointer" }}
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex items-center">
-                        <img
-                          src={item?.imagen || "./logo.png"}
-                          width={100}
-                          alt={item?.nombre}
-                          className="pr-3"
-                        />
-                        <p className="m-0 capitalize font-semibold text-gray-600 tracking-wider">
-                          {item?.nombre}
-                        </p>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex items-center h-full justify-center font-semibold text-gray-600 tracking-wider">
-                        ${item?.valor}
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex items-center w-full h-full justify-center font-semibold text-gray-600 tracking-wider">
-                        <Form.Control
-                          style={{ width: "74px" }}
-                          name="cantidad"
-                          value={item.cantidad}
-                          maxLength={3}
-                          onChange={({ target }) => handleChange(target, item)}
-                          onBlur={({ target }) => handleBlur(target, item)}
-                        />
-                      </div>
-                    </td>
-                    <td>
-                      <div className="flex items-center h-full justify-center font-semibold text-gray-600 tracking-wider">
-                        ${item?.total}
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-          </tbody>
-        </Table>
-      </Card>
+    <div className="w-full flex flex-col gap-6 py-4">
+      {/* Items List */}
+      <div className="bg-white/60 backdrop-blur-xl border border-white/80 shadow-xl rounded-3xl overflow-hidden relative">
+        
+        {/* Header (hidden on mobile, visible on md+) */}
+        <div className="hidden md:grid grid-cols-12 gap-4 px-6 py-4 bg-gray-50/70 border-b border-gray-100/50 text-xs font-bold text-gray-500 uppercase tracking-widest relative z-10">
+           <div className="col-span-1 text-center"></div>
+           <div className="col-span-5">Producto</div>
+           <div className="col-span-2 text-center">Precio (Sin IVA)</div>
+           <div className="col-span-2 text-center">Cantidad</div>
+           <div className="col-span-2 text-right">Subtotal</div>
+        </div>
 
-      <div className="flex justify-between">
-        {user.login && <CodigoDescuento updatedRows={rows} />}
-        <div />
-        <Button
-          className="btnStore border-0 fs-6 w-72 uppercase tracking-wider"
+        {/* Rows */}
+        <div className="divide-y divide-gray-100/50 max-h-[50vh] overflow-y-auto relative z-10 custom-scrollbar">
+          {rows && rows.map((item, index) => (
+             <div key={index} className="grid grid-cols-1 md:grid-cols-12 gap-4 px-6 py-6 items-center hover:bg-white/40 transition-colors">
+               <div className="col-span-1 flex justify-center text-red-400 hover:text-red-500 transition-colors">
+                 <button onClick={() => deleteItem(item)} className="p-2 bg-red-50 hover:bg-red-100 hover:scale-105 transition-all rounded-full shadow-sm">
+                   <TiDelete size={26} />
+                 </button>
+               </div>
+               
+               <div className="col-span-1 md:col-span-5 flex items-center gap-6">
+                 <img src={item?.imagen || "./logo.png"} alt={item?.nombre} className="w-24 h-24 object-cover rounded-2xl shadow-md border border-white" />
+                 <span className="font-extrabold text-gray-700 capitalize text-lg">{item?.nombre}</span>
+               </div>
+               
+               <div className="col-span-1 md:col-span-2 flex justify-between md:justify-center items-center font-bold text-gray-600 bg-gray-50 md:bg-transparent p-3 md:p-0 rounded-xl">
+                 <span className="md:hidden text-[10px] text-gray-400 uppercase tracking-widest">Precio: </span>
+                 <span className="text-lg">${item?.valor}</span>
+               </div>
+
+               <div className="col-span-1 md:col-span-2 flex justify-between md:justify-center items-center bg-gray-50 md:bg-transparent p-3 md:p-0 rounded-xl">
+                 <span className="md:hidden text-[10px] text-gray-400 uppercase tracking-widest">Cantidad: </span>
+                 <Form.Control
+                   className="w-20 text-center rounded-xl border-gray-200 focus:ring-2 focus:ring-blue-400 shadow-inner font-bold text-lg"
+                   name="cantidad" value={item.cantidad} maxLength={3}
+                   onChange={({ target }) => handleChange(target, item)}
+                   onBlur={({ target }) => handleBlur(target, item)}
+                 />
+               </div>
+
+               <div className="col-span-1 md:col-span-2 flex justify-between md:justify-end items-center font-extrabold text-blue-600 text-xl bg-blue-50/50 md:bg-transparent p-3 md:p-0 rounded-xl">
+                 <span className="md:hidden text-[10px] text-gray-400 uppercase tracking-widest">Subtotal: </span>
+                 ${item?.total}
+               </div>
+             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Cart Actions */}
+      <div className="flex flex-col md:flex-row justify-between gap-6 items-center">
+        <div className="w-full md:w-1/2">
+           {user.login && <CodigoDescuento updatedRows={rows} />}
+        </div>
+        <button 
+          className="w-full md:w-auto px-8 py-3 bg-white text-blue-600 hover:bg-blue-50 border border-blue-100 rounded-full font-bold uppercase tracking-widest shadow-sm transition-all hover:shadow-md active:scale-95"
           onClick={recalcute}
         >
-          ACTUALIZAR CARRITO
-        </Button>
+          Actualizar Carrito
+        </button>
       </div>
     </div>
   );

@@ -25,6 +25,7 @@ const FormSearch = ({ setData, setDataTabla, formData }) => {
     setDataTabla({ noData: true });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (search) {
       formSearch.text = formSearch[formSearch.buscar]
@@ -48,6 +49,7 @@ const FormSearch = ({ setData, setDataTabla, formData }) => {
     }
   }, [search]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (formSearch["buscar"] !== "") {
       handleChange({ target: { name: formSearch.buscar, value: "" } });

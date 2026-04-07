@@ -71,28 +71,6 @@ const ImagenReferencial = ({
         </div>
       </>
     );
-
-    return (
-      <>
-        <div className="flex row w-full pl-2 justify-center items-center h-72">
-          <Image
-            src={selectedImage}
-            height={250}
-            className="w-auto"
-            rounded
-            fluid
-          />
-        </div>
-        <Form.Control
-          type="file"
-          size="sm"
-          name="imagen"
-          accept=".jpg,.png,.jpeg"
-          onChange={handleFileChange}
-          className="w-full ml-4 px-2 py-2 border-b-2 text-left text-xs font-semibold text-gray-600 tracking-wider"
-        />
-      </>
-    );
   }
 
   return (

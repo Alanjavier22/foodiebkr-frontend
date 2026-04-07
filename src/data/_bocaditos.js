@@ -1,4 +1,4 @@
-export default [
+const bocaditos = [
   {
     nombre: "Bocaditos de sal",
     key: "1",
@@ -417,3 +417,5 @@ export default [
     ],
   },
 ];
+
+export default bocaditos;

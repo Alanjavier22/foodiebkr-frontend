@@ -53,6 +53,7 @@ const CotizacionContent = ({
 }) => {
   const [adicionales, setAdiconales] = useState([]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const elementsToRemove =
       elementToRemove[Number(item?.id_producto)] || elementToRemove[0];

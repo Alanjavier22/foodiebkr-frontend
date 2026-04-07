@@ -29,6 +29,7 @@ const CotizacionContentv2 = ({
 
   const [elements, setElements] = useState(data);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (required.length !== 0) {
       const newDataForm = required.reduce((acc, item) => {

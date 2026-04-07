@@ -84,6 +84,7 @@ const Cotizaciones = ({ user }) => {
     }
   }, [productData]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const userEmpleado = useCallback(() => {
     if (!empleados && isAdmin) {
       getMethod({

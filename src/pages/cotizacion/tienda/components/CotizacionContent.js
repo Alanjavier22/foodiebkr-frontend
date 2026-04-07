@@ -5,7 +5,7 @@ import _cupcakes from "../../../../data/_cupcakes.js";
 
 import FormDinamico from "./FormDinamico.js";
 import DatosExtra from "./DatosExtra.js";
-import { FormCol, FormHeader } from "../../../../components/FormContent.js";
+import { FormHeader } from "../../../../components/FormContent.js";
 import { Row, Col, Form } from "react-bootstrap";
 
 const OPTIONS_COTIZAR = {
@@ -42,6 +42,7 @@ const CotizacionContent = ({
 
   const required = FIELD_REQUIRED[formData?.id_producto];
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (required.length !== 0) {
       const newDataForm = required.reduce((acc, item) => {

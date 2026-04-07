@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Formik } from "formik";
@@ -42,7 +42,7 @@ const Formulario = () => {
   };
 
   return (
-    <div className="border-0 m-auto p-4 px-5" style={{ maxWidth: "90vw" }}>
+    <div className="bg-white/70 backdrop-blur-lg rounded-3xl p-8 sm:p-12 border border-white/50 shadow-xl h-full flex flex-col justify-center">
       <Formik
         initialValues={{
           nombre: "",
@@ -147,10 +147,10 @@ const Formulario = () => {
               <Col md={12} xl={12}>
                 <div className="flex w-full pt-3 justify-end items-center">
                   <Button
-                    className="btnStore bg-slate-400 px-4 py-2 border-0 rounded-3 tracking-wider"
+                    className="w-full sm:w-auto px-8 py-3 mt-4 rounded-full font-bold tracking-wider shadow-lg shadow-blue-500/30 text-white transition-all duration-300 hover:-translate-y-1 bg-gradient-to-r from-blue-500 to-indigo-500 border-0"
                     onClick={handleSubmit}
                   >
-                    Solicitar que me contacten
+                    Enviar Mensaje
                   </Button>
                 </div>
               </Col>

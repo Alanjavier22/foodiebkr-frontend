@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Image, Carousel } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import { motion } from "framer-motion";
 
 const Slider = ({ sliderData }) => {

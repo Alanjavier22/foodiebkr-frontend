@@ -24,11 +24,11 @@ const CotizacionBocaditos = ({ item, showValor = false }) => {
         opciones: {
           // ["Tipo de bocadito"]: nombreProducto,
           // ["Bocadito Seleccionado"]: datosIniciales.split(" - ")[0],
-          ["Bocadito Seleccionado"]: `
+          "Bocadito Seleccionado": `
             ${nombreProducto} ㅤㅤ-ㅤㅤ  ${datosIniciales.split(" - ")[0]}`,
-          ["Bocadito P/U"]: datosIniciales.split(" - ")[1],
+          "Bocadito P/U": datosIniciales.split(" - ")[1],
           cantidad: cantidad.toString(),
-          ["Valor total"]: total,
+          "Valor total": total,
         },
       });
     }

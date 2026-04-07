@@ -63,7 +63,7 @@ const CotizacionTabla = ({ user, data, productSelect, loading, reload }) => {
     }
 
     setColumn(_column);
-  }, [productSelect]);
+  }, [productSelect, isAdmin]);
 
   const mostrarDetalles = (item) => {
     setDataItem(item);

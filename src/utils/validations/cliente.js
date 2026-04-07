@@ -25,10 +25,10 @@ const validationClient = Yup.object({
     .min(10, "El número de teléfono debe tener minimo 10 caracteres")
     .required("El número de teléfono es requerido"),
   email: Yup.string()
-    .matches(/^[\w\.-]+@[\w\.-]+\.\w{2,4}/, "Correo electrónico no valido")
+    .matches(/^[\w.-]+@[\w.-]+\.\w{2,4}/, "Correo electrónico no valido")
     .required("El correo electrónico es requerido"),
   direccion: Yup.string()
-    .matches(/^[\w\d\s]+$/, "")
+    .matches(/^[\w\s]+$/, "")
 });
 
 export default validationClient;

@@ -58,7 +58,7 @@ const FormControl = ({
 
   useEffect(() => {
     if (value === "" && comprobation) comprobation();
-  }, [value]);
+  }, [value, comprobation]);
 
   return (
     <>

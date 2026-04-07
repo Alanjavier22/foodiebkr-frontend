@@ -36,7 +36,7 @@ const Servicios = ({
 
   useEffect(() => {
     if (totalMostrado) totalMostrado(currentItems.length);
-  }, [currentItems]);
+  }, [currentItems, totalMostrado]);
 
   return (
     <div className="px-5">

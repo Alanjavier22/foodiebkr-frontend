@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Button from "react-bootstrap/Button";
+
 
 import Slider from "../../components/Carousel";
 import Servicios from "../../components/Servicios";

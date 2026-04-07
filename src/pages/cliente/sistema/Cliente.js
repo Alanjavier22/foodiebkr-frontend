@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Row, Col, Form, Button, InputGroup } from "react-bootstrap";
+import { Row, Col, Form, Button } from "react-bootstrap";
 
 import Tabla from "../../../components/Tabla";
 import Visualizar from "./content/Visualizar";

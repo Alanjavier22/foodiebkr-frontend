@@ -21,7 +21,7 @@ const validationRegister = Yup.object({
       return !error;
     }),
   email: Yup.string()
-    .matches(/^[\w\.-]+@[\w\.-]+\.\w{2,4}/, "Correo electrónico no valido")
+    .matches(/^[\w.-]+@[\w.-]+\.\w{2,4}/, "Correo electrónico no valido")
     .required("El correo electrónico es requerido"),
   pass: Yup.string()
     .min(5, "La contraseña debe tener al menos 5 caracteres")

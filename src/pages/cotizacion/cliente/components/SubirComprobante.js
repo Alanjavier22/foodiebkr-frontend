@@ -28,6 +28,7 @@ const SubirComprobante = (props) => {
     }));
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (send) {
       setLoadSpinner(true);
