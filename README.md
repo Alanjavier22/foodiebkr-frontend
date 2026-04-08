@@ -1,4 +1,4 @@
-# Proyecto de tesis para el desarrollo de un prototipo web para la implementacion de un sitio web de la reposteria Maria Gabriela Foodie Baker
+# Prototipo web para la implementacion de un sitio web de una reposteria
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
